@@ -1,0 +1,32 @@
+//package src.views;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class MainFrame extends JFrame {
+    private CardLayout layout;
+    private JPanel mainPanel;
+    private ImageIcon windowIcon = new ImageIcon("./assets/gomoku-logo.png");
+
+    public MainFrame() {
+        setTitle("Gomoku");
+        setSize(600, 600);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setIconImage(windowIcon.getImage());
+
+        layout = new CardLayout();
+        mainPanel = new JPanel(layout);
+
+        mainPanel.add(new MenuScreen(layout, mainPanel), "Menu");
+
+        add(mainPanel);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new MainFrame();
+    }
+}
