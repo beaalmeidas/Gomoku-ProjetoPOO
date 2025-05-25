@@ -1,11 +1,22 @@
 package src.models.player;
 import src.models.enums.PlayerTypesEnum;
+import src.models.enums.PieceColorsEnum;
 
 
 public abstract class Player {
-    private PlayerTypesEnum playerType;
-    int points;
+    protected PlayerTypesEnum playerType;
+    protected PieceColorsEnum pieceColor;
+    protected String name;
 
-    public abstract void getPoints();
-    public abstract void setPoints();
+    public String getName() {
+        return name;
+    }
+
+    public PieceColorsEnum getPieceColor() {
+        return pieceColor;
+    }
+
+    public PlayerTypesEnum getPlayerType() {
+        return playerType;
+    }
 }

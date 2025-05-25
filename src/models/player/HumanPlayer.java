@@ -1,26 +1,44 @@
 package src.models.player;
 
 import src.models.enums.PieceColorsEnum;
-import src.models.player.Player;
+import src.models.enums.PlayerTypesEnum;
 
 
 public class HumanPlayer extends Player {
-    private String name;
-    private PieceColorsEnum pieceColor;
+    protected int victories = 0;
+    protected int points = 0;
 
     public HumanPlayer(String name, PieceColorsEnum pieceColor) {
         this.name = name;
         this.pieceColor = pieceColor;
+        this.playerType = PlayerTypesEnum.HUMAN;
     }
 
-    // fazer a logica de todos esses
-    public void getPoints();
-    
-    public void setPoints();
-    
-    public void getName();
-    
-    public void setName();
+    public void setName(String nameInput) {
+        this.name = nameInput;
+    }
 
-    public int playerMove(int line, int column);
+    public int playerMove(int line, int column) {
+        // implementar
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getVictories() {
+        return victories;
+    }
+
+    public void setVictories() {
+        victories++;
+    }
+
+    public void resetVictories() {
+        victories = 0;
+    }
 }

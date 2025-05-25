@@ -1,6 +1,6 @@
 package src.models.enums;
 
 public enum PlayerTypesEnum {
-    COMPUTER,
+    BOT,
     HUMAN
 }
