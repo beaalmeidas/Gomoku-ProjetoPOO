@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+
 public class MenuScreen extends JPanel{
     public MenuScreen(CardLayout layout, JPanel mainPanel) {
         JLabel label = new JLabel("GOMOKU");

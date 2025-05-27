@@ -6,6 +6,6 @@ public class Match {
     Board board;
     Player currentPlayer;
 
-    public void startGamer();
+    public void startGame();
     public void switchPlayer();
 }
