@@ -36,16 +36,25 @@ public class GameScreen extends BackgroundPanel {
         Image scaledWhiteImage = icon2.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         whiteIcon = new ImageIcon(scaledWhiteImage);
         
-        // TOP PANEL WITH TURN INDICATION
+        // TOP PANEL WITH TURN INDICATION AND LEAVE BUTTON
         turnLabel = new JLabel("Turn: " + match.getCurrentPlayer().getName());
-        turnLabel.setHorizontalAlignment(SwingConstants.LEFT);
         turnLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
-        add(turnLabel, BorderLayout.NORTH);
 
+        JButton leaveButton = new JButton("Leave Game");
+        leaveButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        leaveButton.addActionListener(e -> layout.show(mainPanel, "Menu"));
+
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.add(turnLabel, BorderLayout.WEST);
+        topPanel.add(leaveButton, BorderLayout.EAST);
+        topPanel.setOpaque(false);
+
+        add(topPanel, BorderLayout.NORTH);
+
+        // GRID PANEL
         JPanel gridPanel = new JPanel(new GridLayout(Board.SIZE, Board.SIZE));
         gridPanel.setBackground(Color.MAGENTA);
 
-        // CREATES THE GRID AS BUTTONS
         for (int i = 0; i < Board.SIZE; i++) {
             for (int j = 0; j < Board.SIZE; j++) {
                 JButton btn = new JButton();
@@ -57,6 +66,7 @@ public class GameScreen extends BackgroundPanel {
                 gridPanel.add(btn);
             }
         }
+
         add(gridPanel, BorderLayout.CENTER);
     }
 
