@@ -36,4 +36,13 @@ public class Piece {
     public int getColumn() {
         return column;
     }
+
+    public String getSymbol() {
+        if (color == PieceColorsEnum.BLACK) {
+            return "●";
+        } else if (color == PieceColorsEnum.WHITE) {
+            return "○";
+        }
+        return "?";
+    }
 }

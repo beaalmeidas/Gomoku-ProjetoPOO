@@ -1,3 +1,5 @@
+package src.views;
+
 import javax.swing.*;
 import java.awt.*;
 

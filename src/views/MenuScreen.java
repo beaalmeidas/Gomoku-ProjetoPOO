@@ -1,3 +1,5 @@
+package src.views;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,7 +10,7 @@ public class MenuScreen extends BackgroundPanel {
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 40));
         titlePanel.setOpaque(false);
 
-        ImageIcon icon = new ImageIcon("./assets/gomoku-logo.png");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/assets/gomoku-logo.png"));
         Image img = icon.getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
         icon = new ImageIcon(img);
         JLabel iconLabel = new JLabel(icon);

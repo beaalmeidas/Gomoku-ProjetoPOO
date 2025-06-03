@@ -1,5 +1,7 @@
 package src.models.gaming;
 
+import src.models.gaming.Piece;
+
 
 public class Board {
     private Piece[][] grid;

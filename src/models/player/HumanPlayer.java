@@ -20,6 +20,7 @@ public class HumanPlayer extends Player {
 
     public int playerMove(int line, int column) {
         // implementar
+        return 0;
     }
 
     public int getPoints() {

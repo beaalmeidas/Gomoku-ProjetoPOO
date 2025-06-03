@@ -1,5 +1,6 @@
-import java.awt.*;
+package src.views;
 
+import java.awt.*;
 import javax.swing.*;
 
 import src.models.enums.PieceColorsEnum;

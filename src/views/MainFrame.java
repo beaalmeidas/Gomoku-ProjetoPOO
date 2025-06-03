@@ -1,3 +1,5 @@
+package src.views;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -5,7 +7,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
     private CardLayout layout;
     private JPanel mainPanel;
-    private ImageIcon windowIcon = new ImageIcon("./assets/gomoku-logo.png");
+    private ImageIcon windowIcon = new ImageIcon(getClass().getResource("/assets/gomoku-logo.png"));
 
     public MainFrame() {
         setTitle("Gomoku");
