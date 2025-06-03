@@ -18,11 +18,6 @@ public class HumanPlayer extends Player {
         this.name = nameInput;
     }
 
-    public int playerMove(int line, int column) {
-        // implementar
-        return 0;
-    }
-
     public int getPoints() {
         return points;
     }
