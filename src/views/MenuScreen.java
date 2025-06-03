@@ -64,7 +64,7 @@ public class MenuScreen extends BackgroundPanel {
             } else if (text.equals("Scoreboard")) {
                 button.addActionListener(e -> layout.show(mainPanel, "Scoreboard"));
             } else if (text.equals("Credits")) {
-                button.addActionListener(e -> layout.show(mainPanel, "Credits"));
+                button.addActionListener(e -> layout.show(mainPanel, "CreditsScreen"));
             }
 
             buttonPanel.add(button);
