@@ -46,6 +46,10 @@ public class Piece {
         return "?";
     }
 
+    /*
+        Overriding default 'equals' method to make it so java considers 2 or more pieces with the same color equal
+        If this isn't implemented, java will always think pieces of the same color are different
+    */ 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
