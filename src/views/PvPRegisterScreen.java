@@ -14,10 +14,8 @@ public class PvPRegisterScreen extends BackgroundPanel {
     public PvPRegisterScreen(CardLayout layout, JPanel mainPanel) {
         this.layout = layout;
         this.mainPanel = mainPanel;
-        setLayout(new GridLayout(0, 2, 20, 20));
-        setBorder(BorderFactory.createEmptyBorder(50, 80, 50, 80));
+        setLayout(new BorderLayout());
 
-        // --- Estilos Comuns ---
         Font labelFont = new Font("SansSerif", Font.BOLD, 18);
         Font inputFont = new Font("SansSerif", Font.PLAIN, 18);
         Font buttonFont = new Font("SansSerif", Font.BOLD, 18);
@@ -27,14 +25,11 @@ public class PvPRegisterScreen extends BackgroundPanel {
         Color buttonBgColor = new Color(171, 111, 71, 180);
         Color buttonFgColor = Color.WHITE;
 
-        // --- Componentes ---
         JTextField player1NameField = new JTextField();
         JTextField player2NameField = new JTextField();
         JComboBox<PieceColorsEnum> player1ColorComboBox = new JComboBox<>(PieceColorsEnum.values());
-        // Initialize player2ColorComboBox BEFORE player1ColorComboBox's listener
         JComboBox<PieceColorsEnum> player2ColorComboBox = new JComboBox<>();
 
-        // --- Lógica para desabilitar a cor selecionada para o Jogador 2 ---
         player1ColorComboBox.addActionListener(e -> {
             PieceColorsEnum selected = (PieceColorsEnum) player1ColorComboBox.getSelectedItem();
             player2ColorComboBox.removeAllItems();
@@ -43,62 +38,73 @@ public class PvPRegisterScreen extends BackgroundPanel {
                     player2ColorComboBox.addItem(color);
                 }
             }
+            if (player2ColorComboBox.getItemCount() > 0) {
+                player2ColorComboBox.setSelectedIndex(0);
+            }
         });
         player1ColorComboBox.setSelectedIndex(0);
 
-        // --- Campo Nome Jogador 1 ---
+        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 25));
+        titlePanel.setOpaque(false);
+        JLabel titleLabel = new JLabel("Player VS Player");
+        titleLabel.setFont(new Font("SansSerif", Font.BOLD, 30));
+        titleLabel.setForeground(Color.WHITE);
+        titlePanel.add(titleLabel);
+        add(titlePanel, BorderLayout.NORTH);
+
+        JPanel contentGridPanel = new JPanel(new GridLayout(4, 2, 20, 20));
+        contentGridPanel.setOpaque(false);
+        contentGridPanel.setBorder(BorderFactory.createEmptyBorder(20, 80, 20, 80));
+
         JLabel player1NameLabel = new JLabel("Player 1 Name:");
         player1NameLabel.setFont(labelFont);
         player1NameLabel.setForeground(textColor);
-        add(player1NameLabel);
+        contentGridPanel.add(player1NameLabel);
 
         player1NameField.setFont(inputFont);
         player1NameField.setBackground(inputBgColor);
         player1NameField.setForeground(inputFgColor);
         player1NameField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-        add(player1NameField);
+        contentGridPanel.add(player1NameField);
 
-        // --- Escolha de Cor Jogador 1 ---
         JLabel player1ColorLabel = new JLabel("Player 1 Color:");
         player1ColorLabel.setFont(labelFont);
         player1ColorLabel.setForeground(textColor);
-        add(player1ColorLabel);
+        contentGridPanel.add(player1ColorLabel);
 
         player1ColorComboBox.setFont(inputFont);
         player1ColorComboBox.setBackground(inputBgColor);
         player1ColorComboBox.setForeground(inputFgColor);
-        player1ColorComboBox.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-        add(player1ColorComboBox);
+        player1ColorComboBox.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        contentGridPanel.add(player1ColorComboBox);
 
-        // --- Campo Nome Jogador 2 ---
         JLabel player2NameLabel = new JLabel("Player 2 Name:");
         player2NameLabel.setFont(labelFont);
         player2NameLabel.setForeground(textColor);
-        add(player2NameLabel);
+        contentGridPanel.add(player2NameLabel);
 
         player2NameField.setFont(inputFont);
         player2NameField.setBackground(inputBgColor);
         player2NameField.setForeground(inputFgColor);
-        player2NameField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-        add(player2NameField);
+        player2NameField.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        contentGridPanel.add(player2NameField);
 
-        // --- Escolha de Cor Jogador 2 ---
         JLabel player2ColorLabel = new JLabel("Player 2 Color:");
         player2ColorLabel.setFont(labelFont);
         player2ColorLabel.setForeground(textColor);
-        add(player2ColorLabel);
+        contentGridPanel.add(player2ColorLabel);
 
         player2ColorComboBox.setFont(inputFont);
         player2ColorComboBox.setBackground(inputBgColor);
         player2ColorComboBox.setForeground(inputFgColor);
-        player2ColorComboBox.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-        add(player2ColorComboBox);
+        player2ColorComboBox.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        contentGridPanel.add(player2ColorComboBox);
 
-        // --- Botão Iniciar Jogo ---
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.setOpaque(false);
-        add(new JLabel()); // Slot vazio na primeira coluna da última linha
-        add(buttonPanel); // Adiciona o painel do botão na segunda coluna da última linha
+        add(contentGridPanel, BorderLayout.CENTER);
+
+        JPanel startGameButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        startGameButtonPanel.setOpaque(false);
+        startGameButtonPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 
         JButton startGameButton = new JButton("Start Game");
         startGameButton.setFont(buttonFont);
@@ -115,9 +121,12 @@ public class PvPRegisterScreen extends BackgroundPanel {
             PieceColorsEnum color1 = (PieceColorsEnum) player1ColorComboBox.getSelectedItem();
             PieceColorsEnum color2 = (PieceColorsEnum) player2ColorComboBox.getSelectedItem();
 
-            // Validações
             if (name1.isEmpty() || name2.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Both players have to enter their names.");
+                return;
+            }
+            if (name1.equalsIgnoreCase(name2)) {
+                JOptionPane.showMessageDialog(this, "Please enter different names.");
                 return;
             }
             if (color1 == null || color2 == null) {
@@ -136,9 +145,8 @@ public class PvPRegisterScreen extends BackgroundPanel {
             mainPanel.add(game, "GameScreen");
             layout.show(mainPanel, "GameScreen");
         });
-        buttonPanel.add(startGameButton);
+        startGameButtonPanel.add(startGameButton);
 
-        // --- Botão Voltar ao Menu ---
         JButton backButton = new JButton("Back to Menu");
         backButton.setFont(buttonFont);
         backButton.setPreferredSize(new Dimension(200, 40));
@@ -152,9 +160,18 @@ public class PvPRegisterScreen extends BackgroundPanel {
             layout.show(mainPanel, "Menu");
         });
 
-        JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 20));
-        southPanel.setOpaque(false);
-        southPanel.add(backButton);
-        add(southPanel, BorderLayout.SOUTH);
+        JPanel actionButtonsPanel = new JPanel();
+        actionButtonsPanel.setLayout(new BoxLayout(actionButtonsPanel, BoxLayout.Y_AXIS));
+        actionButtonsPanel.setOpaque(false);
+        actionButtonsPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
+
+        actionButtonsPanel.add(startGameButtonPanel);
+        actionButtonsPanel.add(Box.createVerticalStrut(10));
+        JPanel backButtonWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        backButtonWrapper.setOpaque(false);
+        backButtonWrapper.add(backButton);
+        actionButtonsPanel.add(backButtonWrapper);
+
+        add(actionButtonsPanel, BorderLayout.SOUTH);
     }
 }
