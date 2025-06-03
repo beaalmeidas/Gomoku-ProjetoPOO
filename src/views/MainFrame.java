@@ -21,6 +21,7 @@ public class MainFrame extends JFrame {
 
         mainPanel.add(new MenuScreen(layout, mainPanel), "Menu");
         mainPanel.add(new PvPRegisterScreen(layout, mainPanel), "PvP Register Names");
+        mainPanel.add(new PvBRegisterScreen(layout, mainPanel), "PvB Register Name");
 
         add(mainPanel);
         setVisible(true);

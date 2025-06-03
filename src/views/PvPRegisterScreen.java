@@ -6,6 +6,7 @@ import java.awt.*;
 import src.models.enums.PieceColorsEnum;
 import src.models.player.HumanPlayer;
 
+
 public class PvPRegisterScreen extends JPanel {
     public PvPRegisterScreen(CardLayout layout, JPanel mainPanel) {
         setLayout(new GridLayout(5, 2, 10, 10));

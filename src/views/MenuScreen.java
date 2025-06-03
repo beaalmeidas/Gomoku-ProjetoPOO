@@ -3,6 +3,7 @@ package src.views;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class MenuScreen extends BackgroundPanel {
     public MenuScreen(CardLayout layout, JPanel mainPanel) {
         setLayout(new BorderLayout()); 

@@ -78,8 +78,10 @@ public class GameScreen extends BackgroundPanel {
             btn.setText("");
             if (current.getPieceColor() == PieceColorsEnum.BLACK) {
                 btn.setIcon(blackIcon);
+                btn.setDisabledIcon(blackIcon);
             } else {
                 btn.setIcon(whiteIcon);
+                btn.setDisabledIcon(whiteIcon);
             }
 
             btn.setEnabled(false);

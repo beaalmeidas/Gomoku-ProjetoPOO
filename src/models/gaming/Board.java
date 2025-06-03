@@ -1,5 +1,6 @@
 package src.models.gaming;
 
+import src.models.enums.PieceColorsEnum;
 import src.models.gaming.Piece;
 
 
@@ -27,6 +28,14 @@ public class Board {
             return null;
         }
         return grid[line][column];
+    }
+
+    public void setCell(int row, int col, PieceColorsEnum color) {
+        if (color == null) {
+            grid[row][col] = null;
+        } else {
+            grid[row][col] = new Piece(color);
+        }
     }
 
     public boolean isFull() {
