@@ -20,6 +20,7 @@ public class MainFrame extends JFrame {
         mainPanel = new JPanel(layout);
 
         mainPanel.add(new MenuScreen(layout, mainPanel), "Menu");
+        mainPanel.add(new CreditsScreen(layout, mainPanel), "CreditsScreen");
 
         add(mainPanel);
         setVisible(true);

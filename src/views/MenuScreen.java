@@ -57,7 +57,13 @@ public class MenuScreen extends BackgroundPanel {
 
             if (text.equals("Leave Game")) {
                 button.addActionListener(e -> System.exit(0));
-            } else {
+            } 
+            else if (text.equals("Credits")) {
+                button.addActionListener(e -> {
+                    layout.show(mainPanel, "CreditsScreen");
+                });
+            }
+            else {
                 button.addActionListener(e -> layout.show(mainPanel, "Teste"));
             }
 
