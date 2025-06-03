@@ -57,8 +57,14 @@ public class MenuScreen extends BackgroundPanel {
 
             if (text.equals("Leave Game")) {
                 button.addActionListener(e -> System.exit(0));
-            } else {
-                button.addActionListener(e -> layout.show(mainPanel, "Teste"));
+            } else if (text.equals("Player vs Player")) {
+                button.addActionListener(e -> layout.show(mainPanel, "PvP Register Names"));
+            } else if (text.equals("Player vs Bot")) {
+                button.addActionListener(e -> layout.show(mainPanel, "PvB Register Name"));
+            } else if (text.equals("Scoreboard")) {
+                button.addActionListener(e -> layout.show(mainPanel, "Scoreboard"));
+            } else if (text.equals("Credits")) {
+                button.addActionListener(e -> layout.show(mainPanel, "Credits"));
             }
 
             buttonPanel.add(button);

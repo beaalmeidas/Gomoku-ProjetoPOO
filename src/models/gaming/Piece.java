@@ -39,10 +39,18 @@ public class Piece {
 
     public String getSymbol() {
         if (color == PieceColorsEnum.BLACK) {
-            return "●";
+            return "A";
         } else if (color == PieceColorsEnum.WHITE) {
             return "○";
         }
         return "?";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Piece other = (Piece) obj;
+        return color == other.color;
     }
 }

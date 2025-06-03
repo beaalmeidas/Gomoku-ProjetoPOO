@@ -10,3 +10,5 @@ C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\BackgroundPanel.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\GameScreen.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\MainFrame.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\MenuScreen.java
+C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\PvBRegisterScreen.java
+C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\PvPRegisterScreen.java
