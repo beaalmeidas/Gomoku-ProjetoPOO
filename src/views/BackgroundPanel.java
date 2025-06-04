@@ -7,8 +7,6 @@ import java.awt.*;
 
 public class BackgroundPanel extends JPanel {
     private final Color baseColor = Color.decode("#ffc800");
-    private final Color gridColor = new Color(200, 140, 60);
-    private final int tileSize = 40;
 
     public BackgroundPanel() {
         setOpaque(true);
