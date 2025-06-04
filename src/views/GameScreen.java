@@ -2,6 +2,8 @@ package src.views;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import java.net.URL;
 
 import src.models.enums.PieceColorsEnum;
@@ -36,19 +38,26 @@ public class GameScreen extends BackgroundPanel {
         Image scaledWhiteImage = icon2.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         whiteIcon = new ImageIcon(scaledWhiteImage);
         
-        // TOP PANEL WITH TURN INDICATION AND LEAVE BUTTON
+        // TOP PANEL WITH TURN INDICATION
         turnLabel = new JLabel("Turn: " + match.getCurrentPlayer().getName());
         turnLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
+        turnLabel.setForeground(Color.WHITE);
 
+        // 'LEAVE GAME' BUTTON
         JButton leaveButton = new JButton("Leave Game");
-        leaveButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        leaveButton.setFont(new Font("SansSerif", Font.BOLD, 14));
+        leaveButton.setPreferredSize(new Dimension(150, 35));
+        leaveButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        leaveButton.setFocusPainted(false);
+        leaveButton.setBorder(new LineBorder(Color.WHITE, 2, true));
+        leaveButton.setBackground(new Color(171, 111, 71, 180));
+        leaveButton.setForeground(Color.WHITE);
         leaveButton.addActionListener(e -> layout.show(mainPanel, "Menu"));
 
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.add(turnLabel, BorderLayout.WEST);
         topPanel.add(leaveButton, BorderLayout.EAST);
         topPanel.setOpaque(false);
-
         add(topPanel, BorderLayout.NORTH);
 
         JPanel gridPanel = new JPanel(new GridLayout(Board.SIZE, Board.SIZE, 2, 2));

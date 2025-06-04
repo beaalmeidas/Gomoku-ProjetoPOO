@@ -23,7 +23,7 @@ public class PvBRegisterScreen extends BackgroundPanel {
         Color textColor = Color.WHITE;
         Color inputBgColor = Color.WHITE;
         Color inputFgColor = Color.BLACK;
-        Color buttonBgColor = new Color(171, 111, 71, 180);
+        Color buttonBgColor = new Color(171, 111, 71);
         Color buttonFgColor = Color.WHITE;
 
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 25));

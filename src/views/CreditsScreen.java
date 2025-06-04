@@ -57,8 +57,8 @@ public class CreditsScreen extends BackgroundPanel {
 
         JLabel projectDescriptionLabel = new JLabel(
             "<html><div style='text-align: center;'>"
-            + "This Gomoku project was developed as part of a course assignment for Object-Oriented Programming."
-            + "<br>It aims to replicate the classic game rules within an intuitive graphical interface."
+            + "This Gomoku project was developed as an assignment for the Object-Oriented Programming course."
+            + "<br>It aims to replicate the classic game rules in Java, within an intuitive graphical interface."
             + "</div></html>");
         projectDescriptionLabel.setFont(new Font("SansSerif", Font.PLAIN, 17));
         projectDescriptionLabel.setForeground(Color.WHITE);
@@ -119,13 +119,13 @@ public class CreditsScreen extends BackgroundPanel {
 
         add(centerWrapper, BorderLayout.CENTER);
 
-        JButton backButton = new JButton("Menu");
+        JButton backButton = new JButton("Back to Menu");
         backButton.setFont(new Font("SansSerif", Font.BOLD, 16));
         backButton.setPreferredSize(new Dimension(200, 40));
         backButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         backButton.setFocusPainted(false);
         backButton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2, true));
-        backButton.setBackground(new Color(171, 111, 71, 180));
+        backButton.setBackground(new Color(171, 111, 71));
         backButton.setForeground(Color.WHITE);
 
         backButton.addActionListener(e -> {
