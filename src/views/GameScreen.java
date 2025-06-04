@@ -50,7 +50,7 @@ public class GameScreen extends BackgroundPanel {
         leaveButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         leaveButton.setFocusPainted(false);
         leaveButton.setBorder(new LineBorder(Color.WHITE, 2, true));
-        leaveButton.setBackground(new Color(171, 111, 71, 180));
+        leaveButton.setBackground(new Color(171, 111, 71));
         leaveButton.setForeground(Color.WHITE);
         leaveButton.addActionListener(e -> layout.show(mainPanel, "Menu"));
 

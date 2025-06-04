@@ -1,7 +1,6 @@
 package src.models.gaming;
 
 import src.models.enums.PieceColorsEnum;
-import src.models.gaming.Piece;
 
 
 public class Board {
@@ -68,32 +67,28 @@ public class Board {
         }
 
         PieceColorsEnum color = piece.getColor();
-        int count;
 
-        count = board.countDirection(line, column, 0, 1, color) + board.countDirection(line, column, 0, -1, color) + 1;
-        if (count >= 5) return true;
-
-        count = board.countDirection(line, column, 1, 0, color) + board.countDirection(line, column, -1, 0, color) + 1;
-        if (count >= 5) return true;
-
-        count = board.countDirection(line, column, 1, 1, color) + board.countDirection(line, column, -1, -1, color) + 1;
-        if (count >= 5) return true;
-
-        count = board.countDirection(line, column, 1, -1, color) + board.countDirection(line, column, -1, 1, color) + 1;
-        if (count >= 5) return true;
+        // checking for win horizontally
+        if (board.countDirection(line, column, 0, 1, color) + 1 >= 5) return true;
+        // checking for win vertically
+        if (board.countDirection(line, column, 1, 0, color) + 1 >= 5) return true;
+        // checking for win in the right diagonal /
+        if (board.countDirection(line, column, 1, -1, color) + 1 >= 5) return true;
+        // checking for win in the left diagonal \
+        if (board.countDirection(line, column, 1, 1, color) + 1 >= 5) return true;
 
         return false;
     }
 
     public int countInAllDirections(int row, int col, PieceColorsEnum color) {
         return Math.max(
-            Math.max(countDirection(row, col, 1, 0, color), countDirection(row, col, 0, 1, color)), // linha e coluna
-            Math.max(countDirection(row, col, 1, 1, color), countDirection(row, col, 1, -1, color)) // diagonais
+            Math.max(countDirection(row, col, 1, 0, color), countDirection(row, col, 0, 1, color)),
+            Math.max(countDirection(row, col, 1, 1, color), countDirection(row, col, 1, -1, color))
         );
     }
 
     private int countDirection(int row, int col, int dRow, int dCol, PieceColorsEnum color) {
-        int count = 1;
+        int count = 0;
 
         int r = row + dRow, c = col + dCol;
         while (
@@ -122,22 +117,4 @@ public class Board {
 
         return count;
     }
-
-    // private static int countDirection(Board board, int startLine, int startCol, Piece piece, int dx, int dy) {
-    //     int count = 0;
-    //     int x = startLine + dx;
-    //     int y = startCol + dy;
-
-    //     while (x >= 0 && x < SIZE && y >= 0 && y < SIZE) {
-    //         Piece current = board.getCell(x, y);
-    //         if (current != null && current.equals(piece)) {
-    //             count++;
-    //             x += dx;
-    //             y += dy;
-    //         } else {
-    //             break;
-    //         }
-    //     }
-    //     return count;
-    // }
 }
