@@ -1,0 +1,142 @@
+package src.views;
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.LineBorder;
+
+import java.net.URL;
+
+import src.models.enums.PieceColorsEnum;
+import src.models.gaming.Board;
+import src.models.gaming.Match;
+import src.models.gaming.Piece;
+import src.models.gaming.Scoreboard;
+import src.models.player.BotPlayer;
+import src.models.player.HumanPlayer;
+import src.models.player.Player;
+
+
+public class GameScreen extends BackgroundPanel {
+    private Board board;
+    private Match match;
+    private JButton[][] buttons;
+    private JLabel turnLabel;
+    private ImageIcon blackIcon;
+    private ImageIcon whiteIcon;
+
+    public GameScreen(CardLayout layout, JPanel mainPanel, Player p1, Player p2) {
+        setLayout(new BorderLayout());
+
+        this.board = new Board();
+        this.match = new Match(p1, p2, board);
+        this.buttons = new JButton[Board.SIZE][Board.SIZE];
+
+        // BLACK ICON
+        ImageIcon icon1 = new ImageIcon(getClass().getResource("/assets/black-piece-icon.png"));
+        Image scaledBlackImage = icon1.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        blackIcon = new ImageIcon(scaledBlackImage);
+        
+        // WHITE ICON
+        ImageIcon icon2 = new ImageIcon(getClass().getResource("/assets/white-piece-icon.png"));
+        Image scaledWhiteImage = icon2.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        whiteIcon = new ImageIcon(scaledWhiteImage);
+        
+        // TOP PANEL WITH TURN INDICATION
+        turnLabel = new JLabel("Turn: " + match.getCurrentPlayer().getName());
+        turnLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
+        turnLabel.setForeground(Color.WHITE);
+
+        // 'LEAVE GAME' BUTTON
+        JButton leaveButton = new JButton("Leave Game");
+        leaveButton.setFont(new Font("SansSerif", Font.BOLD, 14));
+        leaveButton.setPreferredSize(new Dimension(150, 35));
+        leaveButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        leaveButton.setFocusPainted(false);
+        leaveButton.setBorder(new LineBorder(Color.WHITE, 2, true));
+        leaveButton.setBackground(new Color(171, 111, 71));
+        leaveButton.setForeground(Color.WHITE);
+        leaveButton.addActionListener(e -> layout.show(mainPanel, "Menu"));
+
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.add(turnLabel, BorderLayout.WEST);
+        topPanel.add(leaveButton, BorderLayout.EAST);
+        topPanel.setOpaque(false);
+        add(topPanel, BorderLayout.NORTH);
+
+        JPanel gridPanel = new JPanel(new GridLayout(Board.SIZE, Board.SIZE, 2, 2));
+        gridPanel.setBackground(new Color(229, 229, 225));
+
+        for (int i = 0; i < Board.SIZE; i++) {
+            for (int j = 0; j < Board.SIZE; j++) {
+                JButton btn = new JButton();
+                btn.setPreferredSize(new Dimension(60, 60));
+                btn.setFocusPainted(false);
+
+                btn.setBackground(new Color(222, 182, 90));
+
+                btn.setRolloverEnabled(false);
+                
+                btn.setDisabledIcon(null); 
+                
+                final int row = i, col = j;
+                btn.addActionListener(e -> handleMove(row, col, btn));
+                buttons[i][j] = btn;
+                gridPanel.add(btn);
+            }
+        }
+
+        add(gridPanel, BorderLayout.CENTER);
+    }
+
+    private void executeBotMove() {
+        BotPlayer bot = (BotPlayer) match.getCurrentPlayer();
+        int[] move = bot.botMove(board);
+
+        int row = move[0];
+        int col = move[1];
+
+        JButton btn = buttons[row][col];
+        handleMove(row, col, btn);
+    }
+
+    private void handleMove(int row, int col, JButton btn) {
+        Player current = match.getCurrentPlayer();
+        Piece piece = new Piece(current.getPieceColor(), current, row, col);
+
+        if (board.placePiece(piece, row, col)) {
+            btn.setText("");
+            if (current.getPieceColor() == PieceColorsEnum.BLACK) {
+                btn.setIcon(blackIcon);
+                btn.setDisabledIcon(blackIcon);
+            } else {
+                btn.setIcon(whiteIcon);
+                btn.setDisabledIcon(whiteIcon);
+            }
+
+            btn.setEnabled(false);
+
+            if (Board.checkForWin(board, row, col, piece)) {
+                if (current instanceof HumanPlayer) {
+                    Scoreboard.addOrUpdatePlayer((HumanPlayer) current);
+                }
+                JOptionPane.showMessageDialog(this, current.getName() + " wins!");
+                disableBoard();
+            } else {
+                match.switchPlayer();
+                turnLabel.setText("Turn: " + match.getCurrentPlayer().getName());
+
+                if (match.getCurrentPlayer() instanceof BotPlayer) {
+                    Timer timer = new Timer(500, evt -> executeBotMove());
+                    timer.setRepeats(false);
+                    timer.start();
+                }
+            }
+        }
+    }
+
+    private void disableBoard() {
+        for (JButton[] row : buttons)
+            for (JButton btn : row)
+                btn.setEnabled(false);
+    }
+}
