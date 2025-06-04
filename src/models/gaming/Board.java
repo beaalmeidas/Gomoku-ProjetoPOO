@@ -48,19 +48,6 @@ public class Board {
         return true;
     }
 
-    public void showBoard() {
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                if (grid[i][j] == null) {
-                    System.out.print(". ");
-                } else {
-                    System.out.print(grid[i][j].getSymbol() + " ");
-                }
-            }
-            System.out.println();
-        }
-    }
-
     public static boolean checkForWin(Board board, int line, int column, Piece piece) {
         if (piece == null) {
             return false;
