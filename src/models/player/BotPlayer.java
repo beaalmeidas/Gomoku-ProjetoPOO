@@ -104,16 +104,4 @@ public class BotPlayer extends Player{
         }
         return false;
     }
-
-    /*
-    public int[] botMove(Board board) {
-        Random rand = new Random();
-        int row, col;
-        do {
-            row = rand.nextInt(Board.SIZE);
-            col = rand.nextInt(Board.SIZE);
-        } while (board.getCell(row, col) != null);
-        return new int[]{row, col};
-    }
-    */
 }

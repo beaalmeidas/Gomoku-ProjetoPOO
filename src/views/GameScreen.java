@@ -3,7 +3,6 @@ package src.views;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.Timer;
 
 import java.net.URL;
 
@@ -11,7 +10,9 @@ import src.models.enums.PieceColorsEnum;
 import src.models.gaming.Board;
 import src.models.gaming.Match;
 import src.models.gaming.Piece;
+import src.models.gaming.Scoreboard;
 import src.models.player.BotPlayer;
+import src.models.player.HumanPlayer;
 import src.models.player.Player;
 
 
@@ -115,6 +116,9 @@ public class GameScreen extends BackgroundPanel {
             btn.setEnabled(false);
 
             if (Board.checkForWin(board, row, col, piece)) {
+                if (current instanceof HumanPlayer) {
+                    Scoreboard.addOrUpdatePlayer((HumanPlayer) current);
+                }
                 JOptionPane.showMessageDialog(this, current.getName() + " wins!");
                 disableBoard();
             } else {

@@ -3,6 +3,7 @@ C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\models\enums\PlayerTypesEn
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\models\gaming\Board.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\models\gaming\Match.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\models\gaming\Piece.java
+C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\models\gaming\Scoreboard.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\models\player\BotPlayer.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\models\player\HumanPlayer.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\models\player\Player.java
@@ -13,3 +14,4 @@ C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\MainFrame.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\MenuScreen.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\PvBRegisterScreen.java
 C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\PvPRegisterScreen.java
+C:\Users\biaal\Documents\GitHub\Gomoku-ProjetoPOO\src\views\ScoreboardScreen.java

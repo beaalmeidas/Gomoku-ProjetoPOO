@@ -25,6 +25,7 @@ public class MainFrame extends JFrame {
         mainPanel.add(menuScreen, "Menu");
         mainPanel.add(pvpRegisterScreen, "PvP Register Names");
         mainPanel.add(new PvBRegisterScreen(layout, mainPanel), "PvB Register Name");
+        mainPanel.add(new ScoreboardScreen(layout, mainPanel), "Scoreboard");
         mainPanel.add(new CreditsScreen(layout, mainPanel), "CreditsScreen");
 
         add(mainPanel);
@@ -35,4 +36,3 @@ public class MainFrame extends JFrame {
         new MainFrame();
     }
 }
-

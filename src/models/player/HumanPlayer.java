@@ -6,7 +6,6 @@ import src.models.enums.PlayerTypesEnum;
 
 public class HumanPlayer extends Player {
     protected int victories = 0;
-    protected int points = 0;
 
     public HumanPlayer(String name, PieceColorsEnum pieceColor) {
         this.name = name;
@@ -18,20 +17,12 @@ public class HumanPlayer extends Player {
         this.name = nameInput;
     }
 
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
     public int getVictories() {
         return victories;
     }
 
-    public void setVictories() {
-        victories++;
+    public void setVictories(int victories) {
+        this.victories = victories;
     }
 
     public void resetVictories() {

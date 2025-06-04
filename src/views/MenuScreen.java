@@ -76,7 +76,11 @@ public class MenuScreen extends BackgroundPanel {
                     layout.show(mainPanel, "PvB Register Name");
                 });
             } else if (text.equals("Scoreboard")) {
-                button.addActionListener(e -> layout.show(mainPanel, "Scoreboard"));
+                button.addActionListener(e -> {
+                    mainPanel.remove(mainPanel.getComponent(3)); // Remove Scoreboard antigo (índice fixo)
+                    mainPanel.add(new ScoreboardScreen(layout, mainPanel), "Scoreboard");
+                    layout.show(mainPanel, "Scoreboard");
+                });
             } else if (text.equals("Credits")) {
                 button.addActionListener(e -> layout.show(mainPanel, "CreditsScreen"));
             }
