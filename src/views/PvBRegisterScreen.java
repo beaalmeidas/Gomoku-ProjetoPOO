@@ -6,7 +6,7 @@ import java.awt.*;
 
 import src.models.enums.PieceColorsEnum;
 import src.models.player.HumanPlayer;
-
+import src.models.player.BotPlayer;
 
 public class PvBRegisterScreen extends BackgroundPanel {
     private CardLayout layout;
@@ -40,37 +40,37 @@ public class PvBRegisterScreen extends BackgroundPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.fill = GridBagConstraints.HORIZONTAL; 
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        gbc.gridx = 0; 
-        gbc.gridy = 0; 
+        gbc.gridx = 0;
+        gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
         JLabel playerNameLabel = new JLabel("Enter your name:");
         playerNameLabel.setFont(labelFont);
         playerNameLabel.setForeground(textColor);
         contentGridPanel.add(playerNameLabel, gbc);
 
-        gbc.gridx = 1; 
-        gbc.gridy = 0; 
+        gbc.gridx = 1;
+        gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
         JTextField playerName = new JTextField();
         playerName.setFont(inputFont);
         playerName.setBackground(inputBgColor);
         playerName.setForeground(inputFgColor);
         playerName.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-        playerName.setPreferredSize(new Dimension(200, 50)); 
+        playerName.setPreferredSize(new Dimension(200, 50));
         contentGridPanel.add(playerName, gbc);
 
-        gbc.gridx = 0; 
-        gbc.gridy = 1; 
+        gbc.gridx = 0;
+        gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.WEST;
         JLabel playerColorLabel = new JLabel("Choose color:");
         playerColorLabel.setFont(labelFont);
         playerColorLabel.setForeground(textColor);
         contentGridPanel.add(playerColorLabel, gbc);
 
-        gbc.gridx = 1; 
-        gbc.gridy = 1; 
+        gbc.gridx = 1;
+        gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.WEST;
         JComboBox<PieceColorsEnum> playerColor = new JComboBox<>(PieceColorsEnum.values());
         playerColor.setFont(inputFont);
@@ -131,7 +131,8 @@ public class PvBRegisterScreen extends BackgroundPanel {
             }
 
             HumanPlayer player1 = new HumanPlayer(name, color);
-            HumanPlayer player2 = new HumanPlayer(name, color);
+            PieceColorsEnum botColor = (color == PieceColorsEnum.WHITE) ? PieceColorsEnum.BLACK : PieceColorsEnum.WHITE;
+            BotPlayer player2 = new BotPlayer(botColor);
 
             GameScreen game = new GameScreen(layout, mainPanel, player1, player2);
             mainPanel.add(game, "GameScreen");

@@ -3,6 +3,7 @@ package src.views;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.Timer;
 
 import java.net.URL;
 
@@ -10,6 +11,7 @@ import src.models.enums.PieceColorsEnum;
 import src.models.gaming.Board;
 import src.models.gaming.Match;
 import src.models.gaming.Piece;
+import src.models.player.BotPlayer;
 import src.models.player.Player;
 
 
@@ -85,6 +87,17 @@ public class GameScreen extends BackgroundPanel {
         add(gridPanel, BorderLayout.CENTER);
     }
 
+    private void executeBotMove() {
+        BotPlayer bot = (BotPlayer) match.getCurrentPlayer();
+        int[] move = bot.botMove(board);
+
+        int row = move[0];
+        int col = move[1];
+
+        JButton btn = buttons[row][col];
+        handleMove(row, col, btn);
+    }
+
     private void handleMove(int row, int col, JButton btn) {
         Player current = match.getCurrentPlayer();
         Piece piece = new Piece(current.getPieceColor(), current, row, col);
@@ -107,6 +120,12 @@ public class GameScreen extends BackgroundPanel {
             } else {
                 match.switchPlayer();
                 turnLabel.setText("Turn: " + match.getCurrentPlayer().getName());
+
+                if (match.getCurrentPlayer() instanceof BotPlayer) {
+                    Timer timer = new Timer(500, evt -> executeBotMove());
+                    timer.setRepeats(false);
+                    timer.start();
+                }
             }
         }
     }
