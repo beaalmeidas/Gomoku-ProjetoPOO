@@ -8,10 +8,13 @@ import src.models.enums.PieceColorsEnum;
 import src.models.player.HumanPlayer;
 
 public class PvPRegisterScreen extends BackgroundPanel {
+
     private CardLayout layout;
     private JPanel mainPanel;
 
     public PvPRegisterScreen(CardLayout layout, JPanel mainPanel) {
+
+        
         this.layout = layout;
         this.mainPanel = mainPanel;
         setLayout(new BorderLayout());

@@ -17,6 +17,16 @@ public class Piece {
         this.column = column;
     }
 
+    /*
+        Auxilary constructor so an instance
+    */
+    public Piece(PieceColorsEnum color) {
+        this.color = color;
+        this.owner = null;
+        this.line = -1;
+        this.column = -1;
+    }
+
     public PieceColorsEnum getColor() {
         return color;
     }
