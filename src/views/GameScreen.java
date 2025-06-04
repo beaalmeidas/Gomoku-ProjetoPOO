@@ -28,11 +28,11 @@ public class GameScreen extends BackgroundPanel {
         this.match = new Match(p1, p2, board);
         this.buttons = new JButton[Board.SIZE][Board.SIZE];
 
-        ImageIcon icon1 = new ImageIcon(getClass().getResource("/assets/black-piece-icon.png"));
+        ImageIcon icon1 = new ImageIcon(getClass().getResource("/assets/black-piece.png"));
         Image scaledBlackImage = icon1.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         blackIcon = new ImageIcon(scaledBlackImage);
         
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("/assets/white-piece-icon.png"));
+        ImageIcon icon2 = new ImageIcon(getClass().getResource("/assets/white-piece.png"));
         Image scaledWhiteImage = icon2.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         whiteIcon = new ImageIcon(scaledWhiteImage);
         
