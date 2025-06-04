@@ -47,6 +47,22 @@ Gomoku-ProjetoPOO/
 
 ---
 
+## Screenshots
+
+| Menu Screen | PvP Register Screen |
+|-------------|---------------------|
+| <img src="./project-screenshots/menu-screenshot.png" width="200"/> | <img src="./project-screenshots/pvp-screenshot.png" width="200"/> |
+
+| Game Screen | PvB Register Screen |
+|-------------|---------------------|
+| <img src="./project-screenshots/game-screenshot.png" width="200"/> | <img src="./project-screenshots/pvb-screenshot.png" width="200"/> |
+
+| Scoreboard Screen | Credits Screen |
+|-------------------|----------------|
+| <img src="./project-screenshots/scoreboard-screenshot.png" width="200"/> | <img src="./project-screenshots/credits-screenshot.png" width="200"/> |
+
+---
+
 ## How to Run
 
 #### Pre-requisites:
@@ -69,7 +85,6 @@ java -cp bin src.views.MainFrame
 ```
 
 ---
-
 
 ## Authors
 Beatriz Almeida de Souza Silva

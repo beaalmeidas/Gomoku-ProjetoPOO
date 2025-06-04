@@ -77,7 +77,7 @@ public class MenuScreen extends BackgroundPanel {
                 });
             } else if (text.equals("Scoreboard")) {
                 button.addActionListener(e -> {
-                    mainPanel.remove(mainPanel.getComponent(3)); // Remove Scoreboard antigo (índice fixo)
+                    mainPanel.remove(mainPanel.getComponent(3));
                     mainPanel.add(new ScoreboardScreen(layout, mainPanel), "Scoreboard");
                     layout.show(mainPanel, "Scoreboard");
                 });

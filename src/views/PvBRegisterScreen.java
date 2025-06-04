@@ -8,6 +8,7 @@ import src.models.enums.PieceColorsEnum;
 import src.models.player.HumanPlayer;
 import src.models.player.BotPlayer;
 
+
 public class PvBRegisterScreen extends BackgroundPanel {
     private CardLayout layout;
     private JPanel mainPanel;

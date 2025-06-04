@@ -4,8 +4,6 @@ package src.views;
 import javax.swing.*;
 import java.awt.*;
 
-//ffce1b
-//e2ac4d
 
 public class BackgroundPanel extends JPanel {
     private final Color baseColor = Color.decode("#ffc800");

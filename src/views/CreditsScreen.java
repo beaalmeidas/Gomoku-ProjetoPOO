@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+
 public class CreditsScreen extends BackgroundPanel {
     private CardLayout layout;
     private JPanel mainPanel;

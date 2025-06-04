@@ -7,6 +7,7 @@ import java.awt.*;
 import src.models.enums.PieceColorsEnum;
 import src.models.player.HumanPlayer;
 
+
 public class PvPRegisterScreen extends BackgroundPanel {
     private CardLayout layout;
     private JPanel mainPanel;
