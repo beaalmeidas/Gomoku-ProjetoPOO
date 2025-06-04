@@ -17,9 +17,6 @@ public class Piece {
         this.column = column;
     }
 
-    /*
-        Auxilary constructor so an instance
-    */
     public Piece(PieceColorsEnum color) {
         this.color = color;
         this.owner = null;

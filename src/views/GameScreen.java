@@ -51,15 +51,21 @@ public class GameScreen extends BackgroundPanel {
 
         add(topPanel, BorderLayout.NORTH);
 
-        // GRID PANEL
-        JPanel gridPanel = new JPanel(new GridLayout(Board.SIZE, Board.SIZE));
-        gridPanel.setBackground(Color.MAGENTA);
+        JPanel gridPanel = new JPanel(new GridLayout(Board.SIZE, Board.SIZE, 2, 2));
+        gridPanel.setBackground(new Color(229, 229, 225));
 
         for (int i = 0; i < Board.SIZE; i++) {
             for (int j = 0; j < Board.SIZE; j++) {
                 JButton btn = new JButton();
                 btn.setPreferredSize(new Dimension(60, 60));
                 btn.setFocusPainted(false);
+
+                btn.setBackground(new Color(222, 182, 90));
+
+                btn.setRolloverEnabled(false);
+                
+                btn.setDisabledIcon(null); 
+                
                 final int row = i, col = j;
                 btn.addActionListener(e -> handleMove(row, col, btn));
                 buttons[i][j] = btn;
