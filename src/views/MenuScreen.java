@@ -5,8 +5,15 @@ import java.awt.*;
 
 
 public class MenuScreen extends BackgroundPanel {
-    public MenuScreen(CardLayout layout, JPanel mainPanel) {
-        setLayout(new BorderLayout()); 
+    private CardLayout layout;
+    private JPanel mainPanel;
+    private PvPRegisterScreen pvpRegisterScreen;
+
+    public MenuScreen(CardLayout layout, JPanel mainPanel, PvPRegisterScreen pvpRegisterScreen) {
+        setLayout(new BorderLayout());
+        this.layout = layout;
+        this.mainPanel = mainPanel;
+        this.pvpRegisterScreen = pvpRegisterScreen;
 
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 40));
         titlePanel.setOpaque(false);
@@ -59,9 +66,15 @@ public class MenuScreen extends BackgroundPanel {
             if (text.equals("Leave Game")) {
                 button.addActionListener(e -> System.exit(0));
             } else if (text.equals("Player vs Player")) {
-                button.addActionListener(e -> layout.show(mainPanel, "PvP Register Names"));
+                button.addActionListener(e -> {
+                    pvpRegisterScreen.resetFields();
+                    layout.show(mainPanel, "PvP Register Names");
+                });
             } else if (text.equals("Player vs Bot")) {
-                button.addActionListener(e -> layout.show(mainPanel, "PvB Register Name"));
+                button.addActionListener(e -> {
+                    pvpRegisterScreen.resetFields();
+                    layout.show(mainPanel, "PvB Register Name");
+                });
             } else if (text.equals("Scoreboard")) {
                 button.addActionListener(e -> layout.show(mainPanel, "Scoreboard"));
             } else if (text.equals("Credits")) {

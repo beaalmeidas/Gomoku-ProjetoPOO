@@ -19,11 +19,13 @@ public class MainFrame extends JFrame {
         layout = new CardLayout();
         mainPanel = new JPanel(layout);
 
-        mainPanel.add(new MenuScreen(layout, mainPanel), "Menu");
-        mainPanel.add(new PvPRegisterScreen(layout, mainPanel), "PvP Register Names");
+        PvPRegisterScreen pvpRegisterScreen = new PvPRegisterScreen(layout, mainPanel);
+        MenuScreen menuScreen = new MenuScreen(layout, mainPanel, pvpRegisterScreen);
+
+        mainPanel.add(menuScreen, "Menu");
+        mainPanel.add(pvpRegisterScreen, "PvP Register Names");
         mainPanel.add(new PvBRegisterScreen(layout, mainPanel), "PvB Register Name");
         mainPanel.add(new CreditsScreen(layout, mainPanel), "CreditsScreen");
-
 
         add(mainPanel);
         setVisible(true);
@@ -33,3 +35,4 @@ public class MainFrame extends JFrame {
         new MainFrame();
     }
 }
+

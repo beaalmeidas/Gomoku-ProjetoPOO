@@ -11,6 +11,11 @@ public class PvPRegisterScreen extends BackgroundPanel {
     private CardLayout layout;
     private JPanel mainPanel;
 
+    private JTextField player1NameField;
+    private JTextField player2NameField;
+    private JComboBox<PieceColorsEnum> player1ColorComboBox;
+    private JComboBox<PieceColorsEnum> player2ColorComboBox;
+
     public PvPRegisterScreen(CardLayout layout, JPanel mainPanel) {
         this.layout = layout;
         this.mainPanel = mainPanel;
@@ -25,10 +30,10 @@ public class PvPRegisterScreen extends BackgroundPanel {
         Color buttonBgColor = new Color(171, 111, 71);
         Color buttonFgColor = Color.WHITE;
 
-        JTextField player1NameField = new JTextField();
-        JTextField player2NameField = new JTextField();
-        JComboBox<PieceColorsEnum> player1ColorComboBox = new JComboBox<>(PieceColorsEnum.values());
-        JComboBox<PieceColorsEnum> player2ColorComboBox = new JComboBox<>();
+        player1NameField = new JTextField();
+        player2NameField = new JTextField();
+        player1ColorComboBox = new JComboBox<>(PieceColorsEnum.values());
+        player2ColorComboBox = new JComboBox<>();
 
         player1ColorComboBox.addActionListener(e -> {
             PieceColorsEnum selected = (PieceColorsEnum) player1ColorComboBox.getSelectedItem();
@@ -173,5 +178,23 @@ public class PvPRegisterScreen extends BackgroundPanel {
         actionButtonsPanel.add(backButtonWrapper);
 
         add(actionButtonsPanel, BorderLayout.SOUTH);
+    }
+
+    public void resetFields() {
+        player1NameField.setText("");
+        player2NameField.setText("");
+
+        player1ColorComboBox.setSelectedIndex(0);
+
+        PieceColorsEnum selected = (PieceColorsEnum) player1ColorComboBox.getSelectedItem();
+        player2ColorComboBox.removeAllItems();
+        for (PieceColorsEnum color : PieceColorsEnum.values()) {
+            if (!color.equals(selected)) {
+                player2ColorComboBox.addItem(color);
+            }
+        }
+        if (player2ColorComboBox.getItemCount() > 0) {
+            player2ColorComboBox.setSelectedIndex(0);
+        }
     }
 }
